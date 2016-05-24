@@ -10,29 +10,35 @@
 <title>Music Catalog</title>
 </head>
 <body>
-	<script>
-		var songTitle, artistName, albumName, songYear, genre
-	</script>
-
-
-	<form id="form1" role=”form”>
-		<div id="songTitle" class=”container”>
+	<form id="songInformation">
+		<div id="i1" class="container">
 			Song Title: <input songTitle="songTitle" type="text" size="20">
 		</div>
-		<div id="artistName" class=”container”>
-		Artist Name: <input artistName="artistName" type="text" size="20">
+		<div id="i2" class=”container”>
+			Artist Name: <input artistName="artistName" type="text" size="20">
 		</div>
-		<div id="albumName" class=”container”>
-		Album Name: <input albumName="albumName" type="text" size="20">
+		<div id="i3" class=”container”>
+			Album Name: <input albumName="albumName" type="text" size="20">
 		</div>
-		<div id="songYear" class=”container”>
-		Song Year: <input songYear="songYear" type="text" size="20">
+		<div id="i4" class=”container”>
+			Song Year: <input songYear="songYear" type="text" size="20">
 		</div>
-		<div id="genre" class=”container”>
-		Genre: <input genre="genre" type="text" size="20">
+		<div id="i5" class=”container”>
+			Genre: <input genre="genre" type="text" size="20">
 		</div>
-
-		<button type=”submit” class=”btnbtn-default”>Submit</button>
 	</form>
+
+	<button onclick="pushToDb()" class=”btnbtn-default”>Submit</button>
+
+<script language="JavaScript" type="Text/JavaScript">
+function pushToDb(){
+var theInput = document.getElementById('songTitle');
+alert(theInput);
+}
+</script>
+
+
+
+
 </body>
 </html>

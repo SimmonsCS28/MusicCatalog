@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+main {
+	background: #e3e3e3;
+	overflow: hidden;
+	padding-top: 50px;
+	padding-bottom: 50px
+}
+
+main.padding {
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+div.center {
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	background: #e3e3e3;
+}

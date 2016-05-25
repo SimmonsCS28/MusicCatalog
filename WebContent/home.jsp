@@ -12,30 +12,31 @@
 <body>
 	<form id="songInformation">
 		<div id="i1" class="container">
-			Song Title: <input songTitle="songTitle" type="text" size="20">
+			Song Title: <input id="songTitle" type="text" size="20">
 		</div>
 		<div id="i2" class=”container”>
-			Artist Name: <input artistName="artistName" type="text" size="20">
+			Artist Name: <input id="artistName" type="text" size="20">
 		</div>
 		<div id="i3" class=”container”>
-			Album Name: <input albumName="albumName" type="text" size="20">
+			Album Name: <input id="albumName" type="text" size="20">
 		</div>
 		<div id="i4" class=”container”>
-			Song Year: <input songYear="songYear" type="text" size="20">
+			Song Year: <input id="songYear" type="text" size="20">
 		</div>
 		<div id="i5" class=”container”>
-			Genre: <input genre="genre" type="text" size="20">
+			Genre: <input id="genre" type="text" size="20">
 		</div>
 	</form>
 
-	<button onclick="pushToDb()" class=”btnbtn-default”>Submit</button>
+	<button onclick=pushToDb() class=”btnbtn-default”>Submit</button>
 
-<script language="JavaScript" type="Text/JavaScript">
-function pushToDb(){
-var theInput = document.getElementById('songTitle');
-alert(theInput);
-}
-</script>
+	<script language="JavaScript" type="Text/JavaScript">
+		function pushToDb() {
+			var myForm = document.getElementById('songInformation');
+			console.log(myForm.songTitle.value + "\n" + myForm.artistName.value + "\n" + myForm.albumName.value 
+					+ "\n" + myForm.songYear.value + "\n" + myForm.genre.value);
+		}
+	</script>
 
 
 

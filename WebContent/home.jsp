@@ -11,6 +11,9 @@
 <title>Music Catalog</title>
 </head>
 <body>
+<%Connection c = MySQL.connect();
+			out.print(c);
+			MySQL.close(c);%>
 	<form id="songInformation">
 		<div id="i1" class="container">
 			Song Title: <input id="songTitle" type="text" size="20">
@@ -34,11 +37,6 @@
 	<script language="JavaScript" type="Text/JavaScript">
 		function pushToDb() {
 			var myForm = document.getElementById('songInformation');
-	<%Connection c = MySQL.connect();
-			out.print(c);
-			MySQL.close(c);%>
-		/*console.log(myForm.songTitle.value + "\n" + myForm.artistName.value + "\n" + myForm.albumName.value 
-					+ "\n" + myForm.songYear.value + "\n" + myForm.genre.value);*/
 		}
 	</script>
 

@@ -1,3 +1,5 @@
+
+<%@page import="jsp.*, java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,7 +7,6 @@
 <head>
 <link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet”
 	type=”text/css” />
-<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Music Catalog</title>
 </head>
@@ -33,8 +34,11 @@
 	<script language="JavaScript" type="Text/JavaScript">
 		function pushToDb() {
 			var myForm = document.getElementById('songInformation');
-			console.log(myForm.songTitle.value + "\n" + myForm.artistName.value + "\n" + myForm.albumName.value 
-					+ "\n" + myForm.songYear.value + "\n" + myForm.genre.value);
+	<%Connection c = MySQL.connect();
+			out.print(c);
+			MySQL.close(c);%>
+		/*console.log(myForm.songTitle.value + "\n" + myForm.artistName.value + "\n" + myForm.albumName.value 
+					+ "\n" + myForm.songYear.value + "\n" + myForm.genre.value);*/
 		}
 	</script>
 

@@ -1,6 +1,4 @@
-package jsp;
-
-import java.sql.Connection;
+package domain;
 
 public class Song {
 
@@ -63,18 +61,6 @@ public class Song {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
-	}
-
-	public void save(int songKey, String title, String name, int year, String genre) {
-		Connection c = MySQL.connect();
-
-		MySQL.close(c);
-	}
-
-	public void retrieve() {
-		Connection c = MySQL.connect();
-
-		MySQL.close(c);
 	}
 
 }

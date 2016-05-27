@@ -1,4 +1,4 @@
-package jsp;
+package dataAccess;
 
 import java.sql.*;
 

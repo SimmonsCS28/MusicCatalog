@@ -2,10 +2,10 @@ package domain;
 
 public class Song {
 
-	private int songKey, year;
-	private String name, artist, album, genre;
+	private int songKey;
+	private String name, artist, album, genre, year;
 
-	public Song(int songKey, int year, String name, String artist, String album, String genre) {
+	public Song(int songKey, String year, String name, String artist, String album, String genre) {
 		super();
 		this.songKey = songKey;
 		this.year = year;
@@ -23,11 +23,11 @@ public class Song {
 		this.songKey = songKey;
 	}
 
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 

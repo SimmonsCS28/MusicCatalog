@@ -1,9 +1,6 @@
 package service;
 
-import java.sql.Connection;
-
 import dataAccess.DataQueries;
-import dataAccess.MySQL;
 
 public class SongService {
 

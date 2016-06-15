@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.SQLException;
+
 import dataAccess.DataQueries;
 
 public class SongService {
@@ -9,8 +11,8 @@ public class SongService {
 
 	}
 
-	public void retrieve() {
-		
+	public static void retrieve(String searchEntry) throws SQLException {
+		DataQueries.retrieveFromTable(searchEntry);
 	}
 
 }

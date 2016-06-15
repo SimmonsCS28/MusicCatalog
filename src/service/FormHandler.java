@@ -1,13 +1,15 @@
 package service;
 
-import java.io.IOException; 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Random;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dataAccess.DataQueries;
 
 /**
  * Servlet implementation class FormHandler
@@ -30,7 +32,11 @@ public class FormHandler extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doGet(request, response);
+	
 	}
+
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +51,7 @@ public class FormHandler extends HttpServlet {
 		String genre = request.getParameter("genre");
 		
 		Random gen = new Random();
-		int songKey = gen.nextInt();
+		int songKey = gen.nextInt(5000);
 		SongService.save(songKey, year, name, artist, album, genre);
 		
 	}

@@ -2,7 +2,9 @@ package dataAccess;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DataQueries {
 
@@ -30,9 +32,13 @@ public class DataQueries {
 		}
 	}
 	
-	public static void retrieveFromTable() throws SQLException{
+	public static ResultSet retrieveFromTable(String searchInput) throws SQLException{
 		Connection myConn = MySQL.connect();
-
-		myConn.close();
+		PreparedStatement preparedStatement = null;
+		String sql = "DELETE song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" + searchInput +"'";
+		preparedStatement = (PreparedStatement) myConn.createStatement();
+		ResultSet result =  preparedStatement.executeQuery(sql);
+		return result;
+		//myConn.close();
 	}
 }

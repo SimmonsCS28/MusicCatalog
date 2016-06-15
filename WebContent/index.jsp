@@ -27,7 +27,10 @@
 		<input type="submit" value="Submit">
 	</form>
 
-
+<form action="/MusicCatalog/FormHandler" method = "post">
+		Song Title: <input id="titleSearch" type="text" name ="titleSearch" size="20"><br>
+ 		<input type = "submit" name="retrieveSong" value="Retrieve Song">
+</form>
 
 </body>
 </html>

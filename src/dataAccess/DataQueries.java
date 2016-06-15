@@ -32,13 +32,14 @@ public class DataQueries {
 		}
 	}
 	
-	public static ResultSet retrieveFromTable(String searchInput) throws SQLException{
+	public static void retrieveFromTable(String searchInput) throws SQLException{
 		Connection myConn = MySQL.connect();
 		PreparedStatement preparedStatement = null;
-		String sql = "DELETE song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" + searchInput +"'";
-		preparedStatement = (PreparedStatement) myConn.createStatement();
-		ResultSet result =  preparedStatement.executeQuery(sql);
-		return result;
+		Statement statement = null;
+		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '"+searchInput+"'";
+		statement = myConn.createStatement();
+		statement.executeUpdate(sql);
+	
 		//myConn.close();
 	}
 }

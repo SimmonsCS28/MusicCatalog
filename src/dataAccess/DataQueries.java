@@ -34,12 +34,16 @@ public class DataQueries {
 	
 	public static void retrieveFromTable(String searchInput) throws SQLException{
 		Connection myConn = MySQL.connect();
+		ResultSet resultSet = null;
 		PreparedStatement preparedStatement = null;
 		Statement statement = null;
 		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '"+searchInput+"'";
 		statement = myConn.createStatement();
-		statement.executeUpdate(sql);
-	
-		//myConn.close();
+		resultSet = statement.executeQuery(sql);
+		while (resultSet.next()){
+		String result = resultSet.getString("song");
+		System.out.println(result);
+		}
+		myConn.close();
 	}
 }

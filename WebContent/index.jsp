@@ -24,7 +24,7 @@
 		Song Year: <input id="songYear" type="text" name="songYear" size="20"><br> 
 		Genre: <input id="genre" type="text" name="genre" size="20"><br> 
 		<input type="reset" value="Clear" name="Clear">
-		<input type="submit" value="Submit">
+		<input type="submit" name="songSubmit" value="Submit">
 	</form>
 
 <form action="/MusicCatalog/FormHandler" method = "post">

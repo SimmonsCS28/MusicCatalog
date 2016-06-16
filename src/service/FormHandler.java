@@ -2,15 +2,11 @@ package service;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Random;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import dataAccess.DataQueries;
 
 /**
  * Servlet implementation class FormHandler
@@ -18,19 +14,21 @@ import dataAccess.DataQueries;
 @WebServlet("/FormHandler")
 public class FormHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FormHandler() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public FormHandler() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String name = request.getParameter("titleSearch");
@@ -42,24 +40,36 @@ public class FormHandler extends HttpServlet {
 		}
 	}
 
-	
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		String name = request.getParameter("songTitle");
-		String artist = request.getParameter("artistName");
-		String album = request.getParameter("albumName");
-		String year = request.getParameter("songYear");
-		String genre = request.getParameter("genre");
-		
-		Random gen = new Random();
-		int songKey = gen.nextInt(5000);
-		SongService.save(songKey, year, name, artist, album, genre);
-		
+
+		// write an if statement that calls a separate method for each button's
+		// servlet request
+
+		if (request.getParameter("songSubmit") != null) {
+
+			String name = request.getParameter("songTitle");
+			String artist = request.getParameter("artistName");
+			String album = request.getParameter("albumName");
+			String year = request.getParameter("songYear");
+			String genre = request.getParameter("genre");
+
+			SongService.save(year, name, artist, album, genre);
+		}
+		else if (request.getParameter("retrieveSong") != null){
+			String name = request.getParameter("titleSearch");
+			try {
+				SongService.retrieve(name);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 }

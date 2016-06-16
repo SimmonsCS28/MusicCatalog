@@ -31,13 +31,6 @@ public class FormHandler extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String name = request.getParameter("titleSearch");
-		try {
-			SongService.retrieve(name);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 	}
 
 	/**

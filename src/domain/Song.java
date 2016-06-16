@@ -3,13 +3,21 @@ package domain;
 public class Song {
 
 	private int songKey;
-	private String name, artist, album, genre, year;
+	private String title, artist, album, genre, year;
 
 	public Song(int songKey, String year, String name, String artist, String album, String genre) {
 		super();
 		this.songKey = songKey;
 		this.year = year;
-		this.name = name;
+		this.title = name;
+		this.artist = artist;
+		this.album = album;
+		this.genre = genre;
+	}
+
+	public Song(String year, String name, String artist, String album, String genre) {
+		this.year = year;
+		this.title = name;
 		this.artist = artist;
 		this.album = album;
 		this.genre = genre;
@@ -32,11 +40,11 @@ public class Song {
 	}
 
 	public String getName() {
-		return name;
+		return title;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.title = name;
 	}
 
 	public String getArtist() {

@@ -15,7 +15,7 @@
 <title>Music Catalog</title>
 </head>
 <body>
-<h1>Add Song</h1>
+<h1>Music Catalog Creator</h1>
 	<form action="/MusicCatalog/FormHandler" method="post" id="form" name="songInformation">
 		
 		Song Title: <input id="songTitle" type="text" name="songTitle" size="20"><br> 

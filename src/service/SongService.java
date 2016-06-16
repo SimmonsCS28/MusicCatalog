@@ -13,8 +13,8 @@ public class SongService {
 
 	}
 
-	public static void retrieve(String searchEntry) throws SQLException {
-		DataQueries.retrieveFromTable(searchEntry);
+	public static Object retrieve(String searchEntry) throws SQLException {
+		return DataQueries.retrieveFromTable(searchEntry);
 	}
 
 }

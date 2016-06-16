@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import domain.Song;
+
 public class DataQueries {
 
 	public static void saveToTable(int songKey, String year, String name, String artist, String album, String genre) {
@@ -31,20 +33,26 @@ public class DataQueries {
 
 		}
 	}
-	
-	public static void retrieveFromTable(String searchInput) throws SQLException{
+
+	public static Object retrieveFromTable(String searchInput) throws SQLException {
 		Connection myConn = MySQL.connect();
 		ResultSet resultSet = null;
-		PreparedStatement preparedStatement = null;
 		Statement statement = null;
-		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '"+searchInput+"'";
+		String song = " ", artist = " ", album = " ", year = " ", genre = " ";
+		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" + searchInput
+				+ "'";
 		statement = myConn.createStatement();
 		resultSet = statement.executeQuery(sql);
-		while (resultSet.next()){
-		String song = resultSet.getString("song");
-		String artist = resultSet.getString("artist");
-		System.out.println(song);
+		while (resultSet.next()) {
+			song = resultSet.getString("song");
+			artist = resultSet.getString("artist");
+			album = resultSet.getString("album");
+			year = resultSet.getString("year");
+			genre = resultSet.getString("genre");
+			System.out.println(song + artist + album + year + genre);
 		}
 		myConn.close();
+		Song songResult = new Song(song, artist, album, year, genre);
+		return songResult;
 	}
 }

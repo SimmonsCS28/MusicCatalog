@@ -45,7 +45,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         
-          <a class="navbar-brand" href="#">Music Catalog</a>
+          <a class="navbar-brand" href="http://localhost:8080/MusicCatalog/index.jsp">Music Catalog</a>
           
           <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
           <span class = "icon-bar"></span>
@@ -55,7 +55,7 @@
         
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://localhost:8080/MusicCatalog/add.jsp"><span class="glyphicon glyphicon-plus"></span> Add</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-plus"></span> Add</a></li>
             <li><a href="http://localhost:8080/MusicCatalog/search.jsp"><span class="glyphicon glyphicon-search"></span> Search</a></li>
             <li><a href="http://localhost:8080/MusicCatalog/catalog.jsp"><span class="glyphicon glyphicon-list-alt"></span> Full Catalog</a></li>
           </ul>
@@ -66,8 +66,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Welcome To Music Catalog!</h1>
-        <p class="lead">To get started, use the form below to enter information about a song.<br> When you've entered in all the information available, click submit!</p>
+        <p class="lead">Use the form below to enter information about a song.<br> When you've entered in all the information available, click submit!</p>
       </div>
 <form action="/TestSite/FormHandler" method="post" id="form" name="songInformation">    
 <label for="basic-url">Song Title</label>

@@ -7,21 +7,23 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<meta name="description" content="">
-    	<meta name="author" content="">
-    	<link rel="icon" href="../../favicon.ico">
-		<title>Music Catalog</title>
-		
-		<!-- Bootstrap core CSS -->
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -36,10 +38,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-<body>
+  </head>
 
-   <nav class="navbar navbar-inverse navbar-fixed-top">
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -48,44 +51,58 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Music Catalog</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#">Add</a></li>
+            <li><a href="#search">Search</a></li>
+            <li><a href="#catalog">Full Catalog</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<div class="container" style="padding-top: 150px;">
-	<h1>Enter Info Here</h1>
-	<form action="/MusicCatalog/FormHandler" method="post" id="form"
-		name="songInformation">
-		<div style="padding-top: 30px; padding-bottom: 10px;">
-		Song Title: <input id="songTitle" type="text" name="songTitle"
-			size="20"><br> Artist Name: <input id="artistName"
-			type="text" name="artistName" size="20"><br> Album Name:
-		<input id="albumName" type="text" name="albumName" size="20"><br>
-		Song Year: <input id="songYear" type="text" name="songYear" size="20"><br>
-		Genre: <input id="genre" type="text" name="genre" size="20"><br>
-		</div>
-		<input type="reset" value="Clear" name="Clear"> <input
-			type="submit" value="Submit" name ="submitSong">
-	</form>
-		<div>
-		<form action="/MusicCatalog/FormHandler" method="post">
-		<div style="padding-top: 30px;">
-			Song Title: <input id="titleSearch" type="text" name="titleSearch"
-			size="20"><br>
-		</div>
-		<div style="padding-top: 10px; padding-bottom: 10px;">
-			 <input type="submit" name="retrieveSong"
-			value="Retrieve Song">
-		</div>
-		</form>
-	</div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>How To Get Started!</h1>
+        <p class="lead">Use the form below to enter information about a song.<br> When you've entered in all the information available, click submit!</p>
+      </div>
+<form action="/TestSite/FormHandler" method="post" id="form" name="songInformation">    
+<label for="basic-url">Song Title</label>
+<div class="input-group">
+  <input type="text" class="form-control" name="songTitle" placeholder="Song Title" aria-describedby="basic-addon1">
 </div>
-</body>
+<label for="basic-url">Artist</label>
+<div class="input-group">
+  <input type="text" class="form-control" name="artistName" placeholder="Artist Name" aria-describedby="basic-addon1">
+</div>
+<label for="basic-url">Album</label>
+<div class="input-group">
+  <input type="text" class="form-control" name="albumName" placeholder="Album Name" aria-describedby="basic-addon1">
+</div>
+<label for="basic-url">Year</label>
+<div class="input-group">
+  <input type="text" class="form-control" name="songYear" placeholder="Song Year" aria-describedby="basic-addon1">
+</div>
+<label for="basic-url">Genre</label>
+<div class="input-group">
+  <input type="text" class="form-control" name="genre" placeholder="Genre" aria-describedby="basic-addon1">
+</div>
+<input type="submit" value="Submit" name="songSubmit">
+<input type="reset" value="Clear" name="Clear">
+</form> 
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

@@ -1,7 +1,9 @@
 package service;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 /**
  * Servlet implementation class FormHandler
@@ -65,7 +69,10 @@ public class FormHandler extends HttpServlet {
 		else if (request.getParameter("retrieveSong") != null){
 			String name = request.getParameter("titleSearch");
 			try {
-				SongService.retrieve(name);
+				ArrayList <Object> songInfo = SongService.retrieve(name);
+				request.setAttribute("songInfo", songInfo);
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/search.jsp");
+				rd.forward(request, response);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -3,7 +3,7 @@ package domain;
 public class Song {
 
 	private int songKey;
-	private String title, artist, album, genre, year;
+	private String title, artist, album, genre, year, youtube;
 
 	public Song(int songKey, String year, String name, String artist, String album, String genre) {
 		super();
@@ -15,12 +15,13 @@ public class Song {
 		this.genre = genre;
 	}
 
-	public Song(String year, String name, String artist, String album, String genre) {
+	public Song(String year, String name, String artist, String album, String genre, String youtube) {
 		this.year = year;
 		this.title = name;
 		this.artist = artist;
 		this.album = album;
 		this.genre = genre;
+		this.youtube = youtube;
 	}
 
 	public int getSongKey() {
@@ -69,6 +70,14 @@ public class Song {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public String getYoutube() {
+		return youtube;
+	}
+
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
 	}
 
 }

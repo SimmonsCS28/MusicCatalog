@@ -1,10 +1,12 @@
 package dataAccess;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import domain.Song;
 
@@ -34,11 +36,13 @@ public class DataQueries {
 		}
 	}
 
-	public static Object retrieveFromTable(String searchInput) throws SQLException {
+	public static ArrayList<Object> retrieveFromTable(String searchInput) throws SQLException {
 		Connection myConn = MySQL.connect();
+		
 		ResultSet resultSet = null;
 		Statement statement = null;
-		String song = " ", artist = " ", album = " ", year = " ", genre = " ";
+		String song = " ", artist = " ", album = " ", year = " ", genre = " ", youtube = " ";
+		
 		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" + searchInput
 				+ "'";
 		statement = myConn.createStatement();
@@ -49,10 +53,15 @@ public class DataQueries {
 			album = resultSet.getString("album");
 			year = resultSet.getString("year");
 			genre = resultSet.getString("genre");
-			System.out.println(song + artist + album + year + genre);
+			youtube = "blank";
+			
+			System.out.println(song + " " + artist + " " + album + " " + year + " " + genre + " " + youtube + " ");
 		}
+		Song songObject = new Song(song, artist, album, year, genre, youtube);
 		myConn.close();
-		Song songResult = new Song(song, artist, album, year, genre);
+		ArrayList<Object> songResult = new ArrayList<Object>();
+		songResult.add(songObject);
+
 		return songResult;
 	}
 }

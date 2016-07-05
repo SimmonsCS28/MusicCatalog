@@ -1,8 +1,10 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 import dataAccess.DataQueries;
+
 
 public class SongService {
 
@@ -13,7 +15,7 @@ public class SongService {
 
 	}
 
-	public static Object retrieve(String searchEntry) throws SQLException {
+	public static ArrayList<Object> retrieve(String searchEntry) throws SQLException {
 		return DataQueries.retrieveFromTable(searchEntry);
 	}
 

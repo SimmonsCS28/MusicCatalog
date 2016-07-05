@@ -68,7 +68,7 @@
       <div class="starter-template">
         <p class="lead">Use the form below to enter information about a song.<br> When you've entered in all the information available, click submit!</p>
       </div>
-<form action="/TestSite/FormHandler" method="post" id="form" name="songInformation">    
+<form action="/MusicCatalog/FormHandler" method="post" id="form" name="songInformation" onsubmit="submitSuccess()">    
 <label for="basic-url">Song Title</label>
 <div class="input-group">
   <input type="text" class="form-control" name="songTitle" placeholder="Song Title" aria-describedby="basic-addon1">
@@ -92,6 +92,12 @@
 <input type="submit" value="Submit" name="songSubmit">
 <input type="reset" value="Clear" name="Clear">
 </form> 
+<script>
+function submitSuccess(){
+	alert("Song successfully submitted.")
+}
+</script>
+
     </div><!-- /.container -->
 
 

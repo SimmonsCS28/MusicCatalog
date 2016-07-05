@@ -45,7 +45,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         
-          <a class="navbar-brand" href="#">Music Catalog</a>
+          <a class="navbar-brand" href="http://localhost:8080/MusicCatalog/index.jsp">Music Catalog</a>
           
           <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
           <span class = "icon-bar"></span>
@@ -69,7 +69,7 @@
         <h1>Welcome To Music Catalog!</h1>
         <p class="lead">To get started, use the form below to enter information about a song.<br> When you've entered in all the information available, click submit!</p>
       </div>
-<form action="/TestSite/FormHandler" method="post" id="form" name="songInformation">    
+<form action="/MusicCatalog/FormHandler" method="post" id="form" name="songInformation" onsubmit="submitSuccess()">    
 <label for="basic-url">Song Title</label>
 <div class="input-group">
   <input type="text" class="form-control" name="songTitle" placeholder="Song Title" aria-describedby="basic-addon1">
@@ -90,15 +90,26 @@
 <div class="input-group">
   <input type="text" class="form-control" name="genre" placeholder="Genre" aria-describedby="basic-addon1">
 </div>
+
 <input type="submit" value="Submit" name="songSubmit">
+
 <input type="reset" value="Clear" name="Clear">
+
+
 </form> 
+<script>
+function submitSuccess(){
+	alert("Song successfully submitted.")
+}
+</script>
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../dist/js/bootstrap.min.js"></script>

@@ -2,6 +2,8 @@ package service;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +47,8 @@ public class FormHandler extends HttpServlet {
 		// servlet request
 
 		if (request.getParameter("songSubmit") != null) {
+			
+			
 
 			String name = request.getParameter("songTitle");
 			String artist = request.getParameter("artistName");
@@ -53,6 +57,10 @@ public class FormHandler extends HttpServlet {
 			String genre = request.getParameter("genre");
 
 			SongService.save(year, name, artist, album, genre);
+			String nextJSP = "/index.jsp";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+			dispatcher.forward(request,response);
+			
 		}
 		else if (request.getParameter("retrieveSong") != null){
 			String name = request.getParameter("titleSearch");
@@ -63,6 +71,7 @@ public class FormHandler extends HttpServlet {
 				e1.printStackTrace();
 			}
 		}
+		
 	}
 
 }

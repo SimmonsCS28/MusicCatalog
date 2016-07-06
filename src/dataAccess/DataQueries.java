@@ -36,7 +36,7 @@ public class DataQueries {
 		}
 	}
 
-	public static ArrayList<Object> retrieveFromTable(String searchInput) throws SQLException {
+	public static ArrayList<Object> searchTable(String searchInput) throws SQLException {
 		Connection myConn = MySQL.connect();
 		
 		ResultSet resultSet = null;
@@ -63,5 +63,32 @@ public class DataQueries {
 		songResult.add(songObject);
 
 		return songResult;
+	}
+	
+	public static ArrayList<Object> retrieveAll() throws SQLException{
+Connection myConn = MySQL.connect();
+		
+		ResultSet resultSet = null;
+		Statement statement = null;
+		String song = " ", artist = " ", album = " ", year = " ", genre = " ", youtube = " ";
+		
+		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" ;
+		
+		statement = myConn.createStatement();
+		resultSet = statement.executeQuery(sql);
+		while (resultSet.next()) {
+			song = resultSet.getString("song");
+			artist = resultSet.getString("artist");
+			album = resultSet.getString("album");
+			year = resultSet.getString("year");
+			genre = resultSet.getString("genre");
+			youtube = "blank";
+	}
+		Song songObject = new Song(song, artist, album, year, genre, youtube);
+		myConn.close();
+		ArrayList<Object> catalog = new ArrayList<Object>();
+		catalog.add(songObject);
+
+		return catalog;
 	}
 }

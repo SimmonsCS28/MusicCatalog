@@ -7,7 +7,7 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,22 +24,22 @@
 <!-- Bootstrap core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <link href="../../assets/css/ie10-viewport-bug-workaround.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="starter-template.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -72,62 +72,81 @@
 		</div>
 	</div>
 
-	<div class="container">
-
-		<div id="search">
-			<form action="/MusicCatalog/FormHandler" method="post">
-				<div style="padding-top: 30px;">
-					Song Title: <input id="titleSearch" type="text" name="titleSearch"
-						size="20"><br>
-				</div>
-				<div style="padding-top: 10px; padding-bottom: 10px;">
-					<input type="submit" name="retrieveSong" value="Retrieve Song">
-				</div>
-			</form>
+	<div id="searchbar" class="container">
+		<div class="starter-template" style="padding-top: 100px;">
+			<p class="lead">Choose a filter to search by or simply enter text
+				to search for all titles containing similar information.</p>
+		</div>
+		<div class="row" style="padding-top: 50px;">
+			<div class="col-xs-8 col-xs-offset-2">
+				<form action="/MusicCatalog/FormHandler" method="post">
+					<div class="input-group">
+						<div class="input-group-btn search-panel">
+							<select name="searchInput"
+								class="btn btn-default dropdown-toggle">
+								<option value="none">Any</option>
+								<option value="songTitle">Song Title</option>
+								<option value="artistName">Artist Name</option>
+								<option value="albumName">Album Name</option>
+								<option value="albumYear">Album Year</option>
+								<option value="genre">Genre</option>
+							</select>
+						</div>
+						<input type="text" class="form-control" name="searchInput"
+							placeholder="Search term..."> <span
+							class="input-group-btn">
+							<button class="btn btn-default" type="submit" name="retrieveSong"
+								value="Search">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 
 
-	<div class="container">
-		<div>
+
+
+	<div id="results" class="container">
+		<div style="padding-top: 100px;">
 			<table class="table table-bordered">
 				<c:forEach var="element" items="${songInfo}">
-				<thead>
-					<tr>
-						<th>Song Title</th>
-						<th>Artist</th>
-						<th>Album</th>
-						<th>Year</th>
-						<th>Genre</th>
-						<th>YouTube URL</th>
-					</tr>
-					<tr>
-						<th>${element.year }</th>
-						<th>${element.name}</th>
-						<th>${element.artist}</th>
-						<th>${element.album}</th>
-						<th>${element.genre}</th>
-						<th>${element.youtube}</th>
-					</tr>
-				</thead>
+					<thead>
+						<tr>
+							<th>Song Title</th>
+							<th>Artist</th>
+							<th>Album</th>
+							<th>Year</th>
+							<th>Genre</th>
+							<th>YouTube URL</th>
+						</tr>
+						<tr>
+							<th>${element.year }</th>
+							<th>${element.name}</th>
+							<th>${element.artist}</th>
+							<th>${element.album}</th>
+							<th>${element.genre}</th>
+							<th>${element.youtube}</th>
+						</tr>
+					</thead>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
 
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
-		window.jQuery
-				|| document
-						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+		$(document).ready(function(e) {
+			$('.search-panel .dropdown-menu').find('a').click(function(e) {
+				e.preventDefault();
+				var param = $(this).attr("href").replace("#", "");
+				var concept = $(this).text();
+				$('.search-panel span#search_concept').text(concept);
+				$('.input-group #search_param').val(param);
+			});
+		});
 	</script>
-	<script src="../../dist/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+

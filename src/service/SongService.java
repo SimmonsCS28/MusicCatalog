@@ -15,8 +15,8 @@ public class SongService {
 
 	}
 
-	public static ArrayList<Object> catalogSearch(String searchEntry) throws SQLException {
-		return DataQueries.searchTable(searchEntry);
+	public static ArrayList<Object> catalogSearch(String searchEntry, String searchFilter) throws SQLException {
+		return DataQueries.searchTable(searchEntry, searchFilter);
 	}
 	
 	public static ArrayList<Object> catalogRetrieval() throws SQLException{

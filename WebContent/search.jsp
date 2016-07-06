@@ -82,7 +82,7 @@
 				<form action="/MusicCatalog/FormHandler" method="post">
 					<div class="input-group">
 						<div class="input-group-btn search-panel">
-							<select name="searchInput"
+							<select id="searchInput" name="searchInput"
 								class="btn btn-default dropdown-toggle">
 								<option value="none">Any</option>
 								<option value="songTitle">Song Title</option>

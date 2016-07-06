@@ -68,8 +68,9 @@ public class FormHandler extends HttpServlet {
 		}
 		else if (request.getParameter("retrieveSong") != null){
 			String input = request.getParameter("searchInput");
+			String searchFilter = request.getParameter("searchInput");
 			try {
-				ArrayList <Object> songInfo = SongService.catalogSearch(input);
+				ArrayList <Object> songInfo = SongService.catalogSearch(input, searchFilter);
 				request.setAttribute("songInfo", songInfo);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/search.jsp");
 				rd.forward(request, response);

@@ -36,14 +36,14 @@ public class DataQueries {
 		}
 	}
 
-	public static ArrayList<Object> searchTable(String searchInput) throws SQLException {
+	public static ArrayList<Object> searchTable(String searchInput, String searchFilter) throws SQLException {
 		Connection myConn = MySQL.connect();
 		
 		ResultSet resultSet = null;
 		Statement statement = null;
 		String song = " ", artist = " ", album = " ", year = " ", genre = " ", youtube = " ";
 		
-		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE song = '" + searchInput
+		String sql = "SELECT song, artist, album, year, genre FROM songdatabase.songinfo WHERE '" + searchFilter + "' = '" + searchInput
 				+ "'";
 		statement = myConn.createStatement();
 		resultSet = statement.executeQuery(sql);

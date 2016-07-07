@@ -15,8 +15,12 @@ public class SongService {
 
 	}
 
-	public static ArrayList<Object> retrieve(String searchEntry) throws SQLException {
-		return DataQueries.retrieveFromTable(searchEntry);
+	public static ArrayList<Object> catalogSearch(String searchEntry, String searchFilter) throws SQLException {
+		return DataQueries.searchTable(searchEntry, searchFilter);
+	}
+	
+	public static ArrayList<Object> catalogRetrieval() throws SQLException{
+		return DataQueries.retrieveAll();
 	}
 
 }

@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,13 +83,13 @@
 				<form action="/MusicCatalog/FormHandler" method="post">
 					<div class="input-group">
 						<div class="input-group-btn search-panel">
-							<select id="searchInput" name="searchInput"
+							<select id="searchInput" name="searchFilter"
 								class="btn btn-default dropdown-toggle">
 								<option value="none">Any</option>
-								<option value="songTitle">Song Title</option>
-								<option value="artistName">Artist Name</option>
-								<option value="albumName">Album Name</option>
-								<option value="albumYear">Album Year</option>
+								<option value="song">Song Title</option>
+								<option value="artist">Artist Name</option>
+								<option value="album">Album Name</option>
+								<option value="year">Album Year</option>
 								<option value="genre">Genre</option>
 							</select>
 						</div>
@@ -112,25 +113,26 @@
 	<div id="results" class="container">
 		<div style="padding-top: 100px;">
 			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Song Title</th>
+						<th>Artist</th>
+						<th>Album</th>
+						<th>Year</th>
+						<th>Genre</th>
+						<th>YouTube URL</th>
+					</tr>
+				</thead>
 				<c:forEach var="element" items="${songInfo}">
-					<thead>
-						<tr>
-							<th>Song Title</th>
-							<th>Artist</th>
-							<th>Album</th>
-							<th>Year</th>
-							<th>Genre</th>
-							<th>YouTube URL</th>
-						</tr>
-						<tr>
-							<th>${element.year }</th>
-							<th>${element.name}</th>
-							<th>${element.artist}</th>
-							<th>${element.album}</th>
-							<th>${element.genre}</th>
-							<th>${element.youtube}</th>
-						</tr>
-					</thead>
+					<tr>
+						<th>${element.year }</th>
+						<th>${element.name}</th>
+						<th>${element.artist}</th>
+						<th>${element.album}</th>
+						<th>${element.genre}</th>
+						<th>${element.youtube}</th>
+					</tr>
+
 				</c:forEach>
 			</table>
 		</div>

@@ -7,6 +7,8 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html">
 <html lang="en">
 <head>
@@ -91,13 +93,17 @@
 		<div class="starter-template">
 			<h1>Catalog</h1>
 		</div>
+		
 	</div>
 
 	<div id="filter-bar"></div>
-
+	<form action="/MusicCatalog/FormHandler" method="post">
 	<table id="tbl" data-url="tbl_data.json" data-click-to-select="true"
 		data-toolbar="#filter-bar" data-show-toggle="true"
 		data-show-columns="true">
+		<div class="starter-template">
+		<button id="catalogRetrieval" type="submit" class="btn btn-default" name="retrieveCatalog" value="Click to get data ">Retrieve Catalog</button>
+		</div>
 		<thead>
 			<tr>
 				<th data-field="songname" data-align="" data-sortable="true">Song
@@ -111,30 +117,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>0</td>
-				<td>test0</td>
-				<td>$0</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>test1</td>
-				<td>$1</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>test2</td>
-				<td>$2</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>test3</td>
-				<td>$3</td>
-			</tr>
+			<c:forEach var="element" items="${songInfo}">
+				<tr>
+					<td>${element.year }</td>
+					<td>${element.name}</td>
+					<td>${element.artist}</td>
+					<td>${element.album}</td>
+					<td>${element.genre}</td>
+					<td>${element.youtube}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
+	
+	</form>
 
 	<pre style="margin-top: 30px" id="log"></pre>
+
+
 
 	<script type="text/javascript">
 		$(function() {
@@ -158,6 +158,12 @@
 					});
 
 		});
+	</script>
+	
+	<script>
+	function doLoad(){
+		
+	}
 	</script>
 </body>
 </html>

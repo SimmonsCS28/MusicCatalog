@@ -56,7 +56,7 @@ public class FormHandler extends HttpServlet {
 			String youtube = request.getParameter("youtube");
 
 			SongService.save(year, name, artist, album, genre, youtube);
-			String nextJSP = "/index.jsp";
+			String nextJSP = "/add.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 			dispatcher.forward(request, response);
 

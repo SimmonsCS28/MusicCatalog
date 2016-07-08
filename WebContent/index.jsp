@@ -48,8 +48,7 @@
 		<div class="container">
 
 			<a class="navbar-brand"
-				href="http://localhost:8080/MusicCatalog/index.jsp">Music
-				Log</a>
+				href="http://localhost:8080/MusicCatalog/index.jsp">Music Log</a>
 
 			<button class="navbar-toggle" data-toggle="collapse"
 				data-target=".navHeaderCollapse">
@@ -75,57 +74,129 @@
 
 		<div class="starter-template">
 			<h1>Welcome To Music Log!</h1>
+			<p class="lead">Music Log provides a straight-forward web app for
+				users to create a catalog of your favorite music.</p>
 			<p class="lead">
-				Music Log provides a straight-forward web app to create a catalog of your favorite music.<br>
-				To get started, use the form below to enter information about a
-				song.<br> When you've entered in all the information available,
-				click submit!
+				To get started, login to an existing account with your Username and
+				Password.<br> If you do not already have an account, click on
+				the register tab and create an account.
 			</p>
 		</div>
-		<form action="/MusicCatalog/FormHandler" method="post" id="form"
-			name="songInformation" onsubmit="submitSuccess()">
-			<label for="basic-url">Song Title</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="songTitle"
-					placeholder="Song Title" aria-describedby="basic-addon1">
-			</div>
-			<label for="basic-url">Artist</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="artistName"
-					placeholder="Artist Name" aria-describedby="basic-addon1">
-			</div>
-			<label for="basic-url">Album</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="albumName"
-					placeholder="Album Name" aria-describedby="basic-addon1">
-			</div>
-			<label for="basic-url">Year</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="songYear"
-					placeholder="Song Year" aria-describedby="basic-addon1">
-			</div>
-			<label for="basic-url">Genre</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="genre"
-					placeholder="Genre" aria-describedby="basic-addon1">
-			</div>
-			<label for="basic-url">YouTube URL</label>
-			<div class="input-group">
-				<input type="text" class="form-control" name="youtube"
-					placeholder="You Tube URL" aria-describedby="basic-addon1">
-			</div>
 
-			<input type="submit" value="Submit" name="songSubmit"> <input
-				type="reset" value="Clear" name="Clear">
-
-
-		</form>
-		<script>
-			function submitSuccess() {
-				alert("Song successfully submitted.")
-			}
-		</script>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-login">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-6">
+									<a href="#" class="active" id="login-form-link">Login</a>
+								</div>
+								<div class="col-xs-6">
+									<a href="#" id="register-form-link">Register</a>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<form id="login-form" action="/MusicCatalog/FormHandler"
+										method="post" role="form" style="display: block;">
+										<div class="form-group">
+											<input type="text" name="username" id="username" tabindex="1"
+												class="form-control" placeholder="Username" value="">
+										</div>
+										<div class="form-group">
+											<input type="password" name="password" id="password"
+												tabindex="2" class="form-control" placeholder="Password">
+										</div>
+										<div class="form-group text-center">
+											<input type="checkbox" tabindex="3" class="" name="remember"
+												id="remember"> <label for="remember">
+												Remember Me</label>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" name="login-submit" id="login-submit"
+														tabindex="4" class="form-control btn btn-login"
+														value="Log In">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="text-center">
+														<a href="http://localhost:8080/MusicCatalog/recover.jsp" tabindex="5"
+															class="forgot-password">Forgot Password?</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+									<form id="register-form"
+										action="/MusicCatalog/FormHandler" method="post"
+										role="form" style="display: none;">
+										<div class="form-group">
+											<input type="text" name="username" id="username" tabindex="1"
+												class="form-control" placeholder="Username" value="">
+										</div>
+										<div class="form-group">
+											<input type="email" name="email" id="email" tabindex="1"
+												class="form-control" placeholder="Email Address" value="">
+										</div>
+										<div class="form-group">
+											<input type="password" name="password" id="password"
+												tabindex="2" class="form-control" placeholder="Password">
+										</div>
+										<div class="form-group">
+											<input type="password" name="confirm-password"
+												id="confirm-password" tabindex="2" class="form-control"
+												placeholder="Confirm Password">
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" name="register-submit"
+														id="register-submit" tabindex="4"
+														class="form-control btn btn-register" value="Register Now">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<!-- Login Javascript -->
+	<script>
+		$(function() {
+
+			$('#login-form-link').click(function(e) {
+				$("#login-form").delay(100).fadeIn(100);
+				$("#register-form").fadeOut(100);
+				$('#register-form-link').removeClass('active');
+				$(this).addClass('active');
+				e.preventDefault();
+			});
+			$('#register-form-link').click(function(e) {
+				$("#register-form").delay(100).fadeIn(100);
+				$("#login-form").fadeOut(100);
+				$('#login-form-link').removeClass('active');
+				$(this).addClass('active');
+				e.preventDefault();
+			});
+
+		});
+	</script>
+
 	<!-- /.container -->
 
 

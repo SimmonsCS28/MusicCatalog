@@ -78,8 +78,8 @@
 				you've entered in all the information available, click submit!
 			</p>
 		</div>
-		<form action="/MusicCatalog/FormHandler" method="post" id="form"
-			name="songInformation" onsubmit="submitSuccess()">
+		<form id="add-form" action="/MusicCatalog/FormHandler" method="post" 
+			name="songInformation" role="form" onsubmit="submitSuccess()">
 			<label for="basic-url">Song Title</label>
 			<div class="input-group">
 				<input type="text" class="form-control" name="songTitle"

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 /**
  * Servlet implementation class FormHandler
  */
@@ -45,30 +43,30 @@ public class FormHandler extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		
 		// write an if statement that calls a separate method for each button's
 		// servlet request
 
-		//add song information to songinfo table
+		// add song information to songinfo table
 		if (request.getParameter("songSubmit") != null) {
 			String name = request.getParameter("songTitle");
 			String artist = request.getParameter("artistName");
 			String album = request.getParameter("albumName");
 			String year = request.getParameter("songYear");
 			String genre = request.getParameter("genre");
+			String youtube = request.getParameter("youtube");
 
-			SongService.save(year, name, artist, album, genre);
+			SongService.save(year, name, artist, album, genre, youtube);
 			String nextJSP = "/index.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-			dispatcher.forward(request,response);
-			
+			dispatcher.forward(request, response);
+
 		}
-		//search for specific element in songinfo table
-		else if (request.getParameter("retrieveSong") != null){
+		// search for specific element in songinfo table
+		else if (request.getParameter("retrieveSong") != null) {
 			String input = request.getParameter("searchInput");
 			String searchFilter = request.getParameter("searchFilter");
 			try {
-				ArrayList <Object> songInfo = SongService.catalogSearch(input, searchFilter);
+				ArrayList<Object> songInfo = SongService.catalogSearch(input, searchFilter);
 				request.setAttribute("songInfo", songInfo);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/search.jsp");
 				rd.forward(request, response);
@@ -77,8 +75,8 @@ public class FormHandler extends HttpServlet {
 				e1.printStackTrace();
 			}
 		}
-		//retrieve entire songinfo table to display as full catalog
-		else if(request.getParameter("retrieveCatalog") != null){
+		// retrieve entire songinfo table to display as full catalog
+		else if (request.getParameter("retrieveCatalog") != null) {
 			ArrayList<Object> fullCatalog = null;
 			try {
 				fullCatalog = SongService.catalogRetrieval();
@@ -86,11 +84,11 @@ public class FormHandler extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("songInfo", fullCatalog );
-		    RequestDispatcher view=request.getRequestDispatcher("/catalog.jsp");
-		    view.forward(request,response);
+			request.setAttribute("songInfo", fullCatalog);
+			RequestDispatcher view = request.getRequestDispatcher("/catalog.jsp");
+			view.forward(request, response);
 		}
-		
+
 	}
 
 }

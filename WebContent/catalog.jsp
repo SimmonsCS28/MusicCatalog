@@ -59,7 +59,7 @@
 <script src="../src/ext/bs-table.js"></script>
 
 
-<title>Music Catalog</title>
+<title>Music Log</title>
 
 </head>
 <body>
@@ -67,8 +67,7 @@
 		<div class="container">
 
 			<a class="navbar-brand"
-				href="http://localhost:8080/MusicCatalog/index.jsp">Music
-				Catalog</a>
+				href="http://localhost:8080/MusicCatalog/index.jsp">Music Log</a>
 
 			<button class="navbar-toggle" data-toggle="collapse"
 				data-target=".navHeaderCollapse">
@@ -93,43 +92,48 @@
 		<div class="starter-template">
 			<h1>Catalog</h1>
 		</div>
-		
+
 	</div>
 
 	<div id="filter-bar"></div>
 	<form action="/MusicCatalog/FormHandler" method="post">
-	<table id="tbl" data-url="tbl_data.json" data-click-to-select="true"
-		data-toolbar="#filter-bar" data-show-toggle="true"
-		data-show-columns="true">
 		<div class="starter-template">
-		<button id="catalogRetrieval" type="submit" class="btn btn-default" name="retrieveCatalog" value="Click to get data ">Retrieve Catalog</button>
+			<button id="catalogRetrieval" type="submit" class="btn btn-default"
+				name="retrieveCatalog" value="Click to get data ">Retrieve
+				Catalog</button>
 		</div>
-		<thead>
-			<tr>
-				<th data-field="songname" data-align="" data-sortable="true">Song
-					Name</th>
-				<th data-field="artist" data-align="center" data-sortable="true">Artist</th>
-				<th data-field="album" data-align="" data-sortable="true">Album</th>
-				<th data-field="year" data-align="" data-sortable="true">Year</th>
-				<th data-field="genre" data-align="" data-sortable="true">Genre</th>
-				<th data-field="youtube" data-align="" data-sortable="true">YouTube
-					URL</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="element" items="${songInfo}">
+		<table id="tbl" data-url="tbl_data.json" data-click-to-select="true"
+			data-toolbar="#filter-bar" data-show-toggle="true"
+			data-show-columns="true">
+
+
+
+			<thead>
 				<tr>
-					<td>${element.year }</td>
-					<td>${element.name}</td>
-					<td>${element.artist}</td>
-					<td>${element.album}</td>
-					<td>${element.genre}</td>
-					<td>${element.youtube}</td>
+					<th data-field="songname" data-align="" data-sortable="true">Song
+						Name</th>
+					<th data-field="artist" data-align="center" data-sortable="true">Artist</th>
+					<th data-field="album" data-align="" data-sortable="true">Album</th>
+					<th data-field="year" data-align="" data-sortable="true">Year</th>
+					<th data-field="genre" data-align="" data-sortable="true">Genre</th>
+					<th data-field="youtube" data-align="" data-sortable="true">YouTube
+						URL</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
+			</thead>
+			<tbody>
+				<c:forEach var="element" items="${songInfo}">
+					<tr>
+						<td>${element.year }</td>
+						<td>${element.name}</td>
+						<td>${element.artist}</td>
+						<td>${element.album}</td>
+						<td>${element.genre}</td>
+						<td><a href="${element.youtube}" target="_blank">${element.youtube}</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</form>
 
 	<pre style="margin-top: 30px" id="log"></pre>
@@ -159,11 +163,11 @@
 
 		});
 	</script>
-	
+
 	<script>
-	function doLoad(){
-		
-	}
+		function doLoad() {
+
+		}
 	</script>
 </body>
 </html>

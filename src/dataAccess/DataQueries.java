@@ -12,13 +12,13 @@ import domain.Song;
 
 public class DataQueries {
 
-	public static void saveToTable(int songKey, String year, String name, String artist, String album, String genre) {
+	public static void saveToTable(int songKey, String year, String name, String artist, String album, String genre, String youtube) {
 
 		try {
 			Connection myConn = MySQL.connect();
 			PreparedStatement preparedStatement = null;
-			String sql = "INSERT INTO songinfo (idSongKey, song, artist, album, year, genre) "
-					+ "values (?,?,?,?,?,?);";
+			String sql = "INSERT INTO songinfo (idSongKey, song, artist, album, year, genre, youtube) "
+					+ "values (?,?,?,?,?,?,?);";
 			preparedStatement = myConn.prepareStatement(sql);
 			preparedStatement.setInt(1, songKey);
 			preparedStatement.setString(2, name);
@@ -26,6 +26,7 @@ public class DataQueries {
 			preparedStatement.setString(4, album);
 			preparedStatement.setString(5, year);
 			preparedStatement.setString(6, genre);
+			preparedStatement.setString(7, youtube);
 
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
@@ -106,7 +107,7 @@ public class DataQueries {
 			album = resultSet.getString("album");
 			year = resultSet.getString("year");
 			genre = resultSet.getString("genre");
-			youtube = "blank";
+			youtube = resultSet.getString("youtube");
 			Song songObject = new Song(song, artist, album, year, genre, youtube);
 			catalog.add(songObject);
 		}

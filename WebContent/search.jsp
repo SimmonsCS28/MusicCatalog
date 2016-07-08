@@ -20,7 +20,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>Music Catalog</title>
+<title>Music Log</title>
 
 <!-- Bootstrap core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 
 			<a class="navbar-brand"
 				href="http://localhost:8080/MusicCatalog/index.jsp">Music
-				Catalog</a>
+				Log</a>
 
 			<button class="navbar-toggle" data-toggle="collapse"
 				data-target=".navHeaderCollapse">

@@ -7,7 +7,7 @@
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>Music Catalog</title>
+<title>Music Log</title>
 
 <!-- Bootstrap core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +35,9 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -48,7 +49,7 @@
 
 			<a class="navbar-brand"
 				href="http://localhost:8080/MusicCatalog/index.jsp">Music
-				Catalog</a>
+				Log</a>
 
 			<button class="navbar-toggle" data-toggle="collapse"
 				data-target=".navHeaderCollapse">
@@ -73,8 +74,9 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Welcome To Music Catalog!</h1>
+			<h1>Welcome To Music Log!</h1>
 			<p class="lead">
+				Music Log provides a straight-forward web app to create a catalog of your favorite music.<br>
 				To get started, use the form below to enter information about a
 				song.<br> When you've entered in all the information available,
 				click submit!
